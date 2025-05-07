@@ -12,21 +12,33 @@ jobs:
       - name: Print Date
         run: echo "Today's date is $(date)"
 
+      - name: Job 1 Message
+        run: echo "This is Job 1"
+
   job2:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Message
-        run: echo "Job 2 is running"
+      - name: Print Date
+        run: echo "Today's date is $(date)"
+
+      - name: Job 2 Message
+        run: echo "This is Job 2"
 
   job3:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Directory
-        run: pwd
+      - name: Print Date
+        run: echo "Today's date is $(date)"
+
+      - name: Job 3 Message
+        run: echo "This is Job 3"
 
   job4:
     runs-on: ubuntu-latest
     steps:
-      - name: Job 4
+      - name: Print Date
+        run: echo "Today's date is $(date)"
+
+      - name: Job 4 Message
         run: echo "I am job 4"
 
