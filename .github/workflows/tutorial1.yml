@@ -1,0 +1,32 @@
+name: Tutorial Workflow
+
+on: [push, pull_request]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Print Date
+        run: echo "Today's date is $(date)"
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Message
+        run: echo "Job 2 is running"
+
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Directory
+        run: pwd
+
+  job4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 4
+        run: echo "I am job 4"
+
