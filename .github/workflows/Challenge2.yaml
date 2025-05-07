@@ -1,0 +1,32 @@
+name: Challenge 2 Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  data_pipeline:
+    name: Data Pipeline Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Clean Data
+        run: |
+          pwd
+          ls -al
+          cd ModelCleaning
+          pip install pandas
+          python Cleandata.py
+
+      - name: Train and Test Model
+        run: |
+          cd ModelCleaning
+          python train_test_dataset.py
+
