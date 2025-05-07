@@ -1,4 +1,4 @@
-name: Tutorial Workflow with Dependencies
+name: Python Setup Workflow
 
 on: [push, pull_request]
 
@@ -9,11 +9,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Print Date
-        run: echo "Today's date is $(date)"
+      - name: Setup Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
-      - name: Job 1 Message
-        run: echo "This is Job 1"
+      - name: Verify Python Version
+        run: python --version
+
+      - name: Verify Pip Version
+        run: pip --version
 
   job2:
     runs-on: ubuntu-latest
