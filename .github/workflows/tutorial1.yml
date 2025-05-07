@@ -1,4 +1,4 @@
-name: Tutorial Workflow
+name: Tutorial Workflow with Dependencies
 
 on: [push, pull_request]
 
@@ -35,10 +35,11 @@ jobs:
 
   job4:
     runs-on: ubuntu-latest
+    needs: [job1, job2]
     steps:
       - name: Print Date
         run: echo "Today's date is $(date)"
 
       - name: Job 4 Message
-        run: echo "I am job 4"
+        run: echo "I am job 4 and I depend on job1 and job2"
 
