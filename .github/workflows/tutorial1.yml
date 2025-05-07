@@ -1,4 +1,4 @@
-name: Python Setup and Package Installation
+name: Python Artifact Workflow
 
 on: [push, pull_request]
 
@@ -17,14 +17,17 @@ jobs:
       - name: Verify Python Version
         run: python --version
 
-      - name: Verify Pip Version
-        run: pip --version
-
       - name: Install Pandas
         run: pip install pandas
 
-      - name: Verify Pandas Installation
-        run: python -c "import pandas as pd; print('Pandas version:', pd.__version__)"
+      - name: Create Python Artifact
+        run: |
+          echo "import pandas as pd" > artifact.py
+          echo "print('Hello from artifact.py')" >> artifact.py
+          echo "print('Pandas version:', pd.__version__)" >> artifact.py
+
+      - name: Run Python Artifact
+        run: python artifact.py
 
   job2:
     runs-on: ubuntu-latest
