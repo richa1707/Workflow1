@@ -1,0 +1,41 @@
+name: Challenge Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Date
+        run: echo "Today's date is $(date)"
+
+      - name: Print Working Directory
+        run: pwd
+
+      - name: List Directory Contents
+        run: ls -la
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Verify Python Version
+        run: python --version
+
+      - name: Install Pandas
+        run: pip install pandas
+
+      - name: Create Python Artifact
+        run: |
+          echo "import pandas as pd" > artifact.py
+          echo "print('Hello from artifact.py')" >> artifact.py
+          echo "print('Pandas version:', pd.__version__)" >> artifact.py
+
+      - name: Execute Python Artifact
+        run: python artifact.py
+
