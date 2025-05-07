@@ -1,6 +1,8 @@
 name: ML Model Workflow
 
-on: [push, workflow_dispatch]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,14 +21,20 @@ jobs:
         run: |
           pip install pandas scikit-learn joblib
 
+      - name: Verify Directory Structure
+        run: |
+          echo "Verifying directory structure..."
+          ls -la
+          ls -la ModelCleaning
+
       - name: Clean Data
         run: |
-          cd Workflow1/ModelCleaning
+          cd ModelCleaning
           ls -la
           python Cleandata.py
 
       - name: Train and Test Model
         run: |
-          cd Workflow1/ModelCleaning
+          cd ModelCleaning
           python train_test_dataset.py
 
