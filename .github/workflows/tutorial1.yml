@@ -1,4 +1,4 @@
-name: Python Setup Workflow
+name: Python Setup and Package Installation
 
 on: [push, pull_request]
 
@@ -19,6 +19,12 @@ jobs:
 
       - name: Verify Pip Version
         run: pip --version
+
+      - name: Install Pandas
+        run: pip install pandas
+
+      - name: Verify Pandas Installation
+        run: python -c "import pandas as pd; print('Pandas version:', pd.__version__)"
 
   job2:
     runs-on: ubuntu-latest
