@@ -21,11 +21,12 @@ jobs:
 
       - name: Clean Data
         run: |
-          cd ModelCleaning
+          cd Workflow1/ModelCleaning
+          ls -la
           python Cleandata.py
 
       - name: Train and Test Model
         run: |
-          cd ModelCleaning
+          cd Workflow1/ModelCleaning
           python train_test_dataset.py
 
